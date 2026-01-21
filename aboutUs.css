@@ -1,0 +1,134 @@
+/* ===== GLOBAL RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Cairo", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+*::selection {
+  background: rgba(212, 175, 55, 0.25); /* gold selection */
+}
+
+
+/* ===== ABOUT HEADER ===== */
+.about-header {
+    background: linear-gradient(
+        rgba(10,10,10,0.6),
+        rgba(10,10,10,0.9)
+    ),
+    url('https://i.pinimg.com/1200x/99/2d/5d/992d5d2045831529d81e65ad5fe6c384.jpg') center/cover no-repeat;
+    padding: 120px 20px;
+    text-align: center;
+    color: #fff;
+    position: relative;
+}
+
+.about-header h1 {
+    font-size: 48px;
+    font-weight: 900;
+    color: #d4af37; /* gold title */
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.about-header p {
+    font-size: 20px;
+    color: #f4e7d5;
+}
+
+/* ===== ABOUT SECTIONS ===== */
+.about-container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 60px auto;
+}
+
+.about-section {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 35px 30px;
+    margin-bottom: 25px;
+    border-left: 6px solid #d4af37;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.25);
+    transition: 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 28px rgba(0,0,0,0.35);
+}
+
+.about-section h2 {
+    font-size: 30px;
+    font-weight: 800;
+    color: #d4af37;
+    margin-bottom: 15px;
+}
+
+.about-section p,
+.about-section ul li {
+    font-size: 18px;
+    color: #000000;
+    line-height: 1.8;
+}
+
+.about-section ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.about-section ul li::before {
+    content: "✔ ";
+    color: #d4af37;
+    font-weight: bold;
+}
+
+/* ===== FOOTER ===== */
+.custom-footer {
+    margin-top: 60px;
+    background: #111;
+    padding: 40px 20px;
+    text-align: center;
+    color: #ccc;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.footer-social a {
+    font-size: 26px;
+    color: #d4af37;
+    transition: 0.3s;
+}
+
+.footer-social a:hover {
+    color: #fff;
+}
+
+.footer-text {
+    font-size: 15px;
+    margin-top: 20px;
+    color: #ccc;
+}
+
+
+@media (max-width: 450px) {
+.about-header h1 {
+    font-size: 38px;
+    font-weight: 900;
+    color: #d4af37; /* gold title */
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+  }

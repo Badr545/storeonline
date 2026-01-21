@@ -1,0 +1,594 @@
+/* ===== GLOBAL RESET ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Cairo", sans-serif;
+  text-decoration: none;
+  list-style: none;
+}
+*::selection {
+  background: rgba(212, 175, 55, 0.25); /* gold selection */
+}
+
+
+ html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+} 
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* ===== VARIABLES ===== */
+:root {
+  --gold: #d4af37;
+  --beige: #f4e7d5;
+  --black: #111;
+  --white: #fff;
+}
+/* ======================
+   HERO BACKGROUND - FINAL
+====================== */
+.bg {
+    background: linear-gradient(
+      to bottom,
+      rgba(15, 15, 15, 0.43),
+      rgba(10, 10, 10, 0.605)
+    );
+  padding: 120px 20px;
+  height: 75vh;
+  position: relative;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+/* VIDEO + FALLBACK */
+#bgVideo,
+#bgFallback {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+/* #bgVideo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  object-fit: cover;
+    background-attachment: fixed;
+} */
+
+
+
+/* FALLBACK IMAGE */
+#bgFallback {
+  display: none;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(15, 15, 15, 0.6),
+      rgba(10, 10, 10, 0.8)
+    ),
+    url("https://i.pinimg.com/1200x/d4/d6/8b/d4d68bebc16df7affbb3e5c8b059f5f7.jpg")
+    center / cover no-repeat;
+}
+
+.overlay {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  text-align: center;
+  padding: 120px 20px;
+  
+}
+
+
+
+.flo{
+  background: #00000002;
+}
+
+/* IMAGES */
+.overlay .img {
+  max-width: 140px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  animation: float 5s ease-in-out infinite;
+  /* transform: rotate(50deg); */
+  filter: blur(0.5px);
+}
+
+/* اختلاف خفيف بين الصور */
+.overlay .img:nth-child(2) {
+  animation-delay: 1.5s;
+}
+.overlay .img:nth-child(3) {
+  animation-delay: 3s;
+}
+
+/* FLOAT EFFECT */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+
+@media (max-width: 480px) {
+
+  .overlay {
+    gap: 18px;
+  }
+
+  .overlay h1 {
+    font-size: 22px;
+  }
+
+  .overlay .img {
+    max-width: 95px;
+  }
+}
+
+
+
+.bg h1 {
+  z-index: 99;
+  color: rgb(179, 178, 162);;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+.bg h1 b{
+
+  color: rgb(112, 106, 18);;
+
+}
+
+/* ======================
+   FULL WIDTH CONTAINERS - ADD THIS SECTION
+====================== */
+.card,
+.cadr-pro,
+.testimonials,
+.custom-footer {
+  width: 100vw !important;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+/* ======================
+   TITLES
+====================== */
+h2 {
+  text-align: center;
+  font-size: 48px;
+  font-family: Cursive;
+  color: var(--gold);
+  font-weight: 800;
+}
+
+/* ======================
+   CARD CONTAINER
+====================== */
+.card {
+  padding: 20px;
+  background: var(--white);
+}
+
+/* ======================
+   GRID ITEMS
+====================== */
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* تغيير من space-between إلى center */
+  align-items: center;
+  padding: 20px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 15px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 5px 25px rgba(0,0,0,0.3);
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ======================
+   FLIP CARD
+====================== */
+.flip-card {
+  background: transparent;
+  width: 350px;
+  height: 480px;
+  perspective: 1000px;
+  margin-top: 30px;
+  flex: 0 0 auto; /* لمنع التمدد */
+}
+
+.title {
+  font-size: 1.6em;
+  font-weight: 900;
+  text-align: center;
+  color: var(--gold);
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding-bottom: 10px;
+  border-radius: 1rem;
+  backface-visibility: hidden;
+  border: 1px solid var(--gold);
+  box-shadow: 0 8px 14px rgba(0,0,0,0.3);
+}
+
+.flip-card-front {
+  background: var(--black);
+  color: var(--beige);
+}
+
+.flip-card-back {
+  background: #1d1d1d;
+  color: var(--beige);
+  transform: rotateY(180deg);
+}
+
+/* ======================
+   DESCRIPTION BLOCK
+====================== */
+.cadr-pro {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.432), rgba(0, 0, 0, 0.514)) ,url("https://i.pinimg.com/736x/cc/9e/07/cc9e07ab2b30ac8d613330e13db6dd01.jpg");
+  /* background-image: url("https://i.pinimg.com/736x/cc/9e/07/cc9e07ab2b30ac8d613330e13db6dd01.jpg"); */
+  background-attachment: fixed;
+  color: var(--beige);
+  background-size: cover; /* إضافة */
+  background-position: center; /* إضافة */
+}
+
+.cadr-pro h1 {
+  text-align: center;
+  font-size: 28px;
+  font-family: Cursive;
+  font-weight: 800;
+  padding: 20px;
+  color: var(--gold);
+}
+
+.cadr-pro p {
+  text-align: center;
+  font-size: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 600;
+  padding: 20px;
+  color: rgb(179, 178, 162);
+  letter-spacing: 2px;
+}
+
+/* ======================
+   FOOTER
+====================== */
+.custom-footer {
+  background: var(--black);
+  color: #d4d4d4;
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.footer-social a {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid #333;
+  background: #1b1b1b;
+  color: var(--gold);
+  transition: all 0.4s ease;
+}
+
+.footer-social a:hover {
+  transform: translateY(-4px);
+  background: var(--gold);
+  color: var(--black);
+}
+
+.footer-text {
+  font-size: 15px;
+  margin-top: 20px;
+  color: #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-text a {
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 700;
+  transition: 0.2s;
+}
+
+.footer-text a:hover {
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .footer-text {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
+
+/* ======================
+   PRODUCTS GRID
+====================== */
+.products-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+.product-card {
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.product-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  margin: 10px 0 5px;
+  color: #333;
+}
+
+.product-card p {
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.product-card button {
+  background-color: var(--gold);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.product-card button:hover {
+  background-color: #b8902f;
+}
+
+/* ======================
+   BUTTON WRAPPER
+====================== */
+.btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+  width: 100%;
+}
+
+.btn {
+  height: 60px;
+  width: 130px;
+  background-color: var(--gold);
+  color: var(--white);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ======================
+   TESTIMONIALS
+====================== */
+.testimonials {
+  padding: 60px 20px;
+  background: var(--black);
+  color: var(--beige);
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+  color: var(--gold);
+}
+
+.testimonial-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 15px;
+  padding: 25px 20px;
+  width: 300px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.5);
+}
+
+.review {
+  font-style: italic;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.stars {
+  color: var(--gold);
+  font-size: 18px;
+}
+
+/* ======================
+   MEDIA QUERIES - UPDATED
+====================== */
+@media(max-width: 900px){
+  .testimonial-container{
+    flex-direction: column;
+    align-items: center;
+  }
+  .testimonial-card{
+    width: 90%;
+  }
+  
+  /* إضافة للمساحات البيضاء على الشاشات الصغيرة */
+  .card,
+  .cadr-pro,
+  .testimonials,
+  .custom-footer {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+.bg h1 {
+  font-size: 30px;
+  font-weight: 600;
+
+}
+}
+
+@media (max-width: 768px) {
+  .bg {
+    padding: 60px 10px;
+    height: 60vh;
+  }
+  
+  .overlay {
+    padding: 60px 10px;
+  }
+  
+  .bg h2 {
+    font-size: 36px;
+  }
+}
+
+@media (max-width: 500px) {
+  .products-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 10px;
+  }
+  .product-card {
+    padding: 5px 2px;
+  }
+  
+  .flip-card {
+    width: 200px;
+    height: 300px;
+  }
+  
+  .card,
+  .cadr-pro,
+  .testimonials,
+  .custom-footer {
+    padding-left: 10px;
+    padding-right: 10px;
+    
+  }
+  .cadr-pro p{
+    font-size: 15px;
+  
+  }
+  .defi{
+    background-color: #111111b8;
+ 
+  }
+  h2 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 600;
+}
+}
+
+/* ===== ADDITIONAL FIXES ===== */
+/* لمنع أي عنصر من الخروج عن الحدود */
+section, div[class*="container"] {
+  max-width: 100vw;
+  overflow: hidden;
+}
+
+/* تأكد أن كل المحتوى داخل حدود الشاشة */
+body > * {
+  max-width: 100vw;
+}
